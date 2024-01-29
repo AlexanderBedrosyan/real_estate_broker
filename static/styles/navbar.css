@@ -32,11 +32,11 @@ header nav {
 }
 
 .logo {
-    margin-left: 70px;
+    margin-left: 27px;
 }
 
 header div img {
-    width: 120px;
+    width: 140px;
 }
 
 .nav-menu {
@@ -108,6 +108,10 @@ header div img {
 
     .drop-down-menu {
         display: block;
+    }
+
+    .drop-down-menu ul {
+        z-index: 1;
     }
 
 }
