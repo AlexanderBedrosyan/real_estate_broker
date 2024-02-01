@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import PersonalInfo, AdvertisementInfo
+from .models import PersonalInfo, AdvertisementInfo, Video
 
 # Create your views here.
 
@@ -15,12 +15,16 @@ def home(request):
     adv_description = adv_info.description
     gif_path = adv_info.video
 
+    video = Video.objects.first()
+    open_video = video.main_video
+
     context = {
         'title': title,
         'description': [text for text in description.split('\n')],
         'picture_path': picture_path,
         'adv_title': adv_title,
         'adv_description': [text for text in adv_description.split('\n')],
-        'gif_path': gif_path
+        'gif_path': gif_path,
+        'open_video': open_video
     }
     return render(request, 'home.html', context)
