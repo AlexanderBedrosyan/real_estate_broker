@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/styles/home.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7.4.1/swiper-bundle.min.css" />
     <title>Document</title>
 </head>
 <body>
     {% include 'navbar.html' %}
     <img src="{{ open_video }}" alt="" class="open-video">
+    
+    <aside>Стоян Черелов</aside>
     
     <main>
         <article>
@@ -41,7 +44,51 @@
                 </section>
             </div>
         </article>
-    </main>    
+    </main>
 
+    <div class="comment-container">
+        <div class="swiper">
+            <h1 class="topic">Какво казват клиентите за Стоян Черелов</h1>
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+                {% for comment in comments %}
+                    <div class="swiper-slide">
+                        <img src="{{ comment.picture }}" alt="">
+                        <p>{{ comment.description }}</p>
+                        <h2>{{ comment.name }}</h2>
+                    </div>
+                {% endfor %}
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+          loop: true,
+            
+          pagination: {
+            el: '.swiper-pagination',
+              clickable: true
+          },
+            
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+            
+        });
+    </script>
+
+    <footer>
+        Created by Alexander Bedrosyan
+    </footer>
 </body>
 </html>

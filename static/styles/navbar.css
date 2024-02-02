@@ -16,13 +16,14 @@ html {
 }
 
 body {
-    background-color: #f4f4f4;
+    background-color: whitesmoke;
     color: #333;
 }
 
 header {
     display: flex;
     box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.75);
+    width: 100%;
 }
 
 .logo,

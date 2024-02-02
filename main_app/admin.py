@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PersonalInfo, AdvertisementInfo, Video
+from .models import PersonalInfo, AdvertisementInfo, Video, Comment
 
 # Register your models here.
 
@@ -14,4 +14,9 @@ class PersonalInfoAdmin(admin.ModelAdmin):
 
 @admin.register(AdvertisementInfo)
 class AdvertisementInfoAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
     pass
