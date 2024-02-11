@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/styles/home.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7.4.1/swiper-bundle.min.css" />
-    <title>Document</title>
+    <title>Добре дошли</title>
 </head>
 <body>
     {% include 'navbar.html' %}
@@ -46,9 +46,12 @@
         </article>
     </main>
 
+    <article class="comment-topic">
+        <h1 class="topic">Какво казват клиентите за Стоян Черелов</h1>
+    </article>
+    
     <div class="comment-container">
         <div class="swiper">
-            <h1 class="topic">Какво казват клиентите за Стоян Черелов</h1>
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
                 {% for comment in comments %}

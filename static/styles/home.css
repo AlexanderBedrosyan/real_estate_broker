@@ -13,7 +13,7 @@ html {
     margin: 0;
 }
 
-/*#f4f4f4*/
+
 body {
     background-color: #333;
     color: whitesmoke;
@@ -36,6 +36,7 @@ main {
     align-items: center;
     background-color: #333;
     color: whitesmoke;
+    padding-left: 80px;
 }
 
 .personal-info img {
@@ -86,6 +87,8 @@ main {
     font-size: 3em;
     font-weight: bold;
     font-style: italic;
+    text-align: center;
+    padding-bottom: 40px;
 }
 
 .company-info section p {
@@ -100,6 +103,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 70px;
 }
 
 .swiper {
@@ -107,8 +111,14 @@ main {
     height: auto;
 }
 
+.comment-topic {
+    display: flex;
+    justify-content: center;
+    background-color: #333333;
+}
+
 .topic {
-    font-size: 2em;
+    font-size: 3em;
     color: whitesmoke;
     padding-bottom: 20px;
 }
@@ -117,6 +127,7 @@ main {
     display: flex;
     width: 600px;
     justify-content: center;
+    text-align: center;
 }
 
 .swiper.swiper-initialized.swiper-horizontal {
@@ -126,7 +137,7 @@ main {
 .swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events {
     width: 70% !important;
     text-align: center;
-    padding-block: 80px;
+    padding-block: 40px;
 }
 
 .swiper-slide img {
@@ -160,13 +171,55 @@ footer {
     padding-block: 5px;
 }
 
+
 aside {
     position: absolute;
-    font-family: 'Playfair Display', serif;
-    top: 50%;
+    font-family: 'Monotype Corsiva' , serif;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 10em;
+    font-size: 9em;
     color: whitesmoke;
     font-style: italic;
+}
+
+@media screen and (max-width: 1440px) {
+    aside {
+        font-size: 7em;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    aside {
+        font-size: 5em;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .personal-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 15px 0 0;
+    }
+
+    .personal-info h1 {
+        text-align: center;
+    }
+
+    aside {
+        font-size: 3em;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    aside {
+        font-size: 2em;
+    }
+
+    .comment-topic {
+        padding-bottom: 50px;
+        text-align: center;
+    }
 }
