@@ -1,30 +1,46 @@
+{% load static %}
 
-<link rel="stylesheet" href="/static/styles/navbar.css">
+<link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <header>
-        <div class="logo">
-            <img src="/static/images/foros_invest.png" alt="logo-pic">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="/static/images/foros_invest.png" alt="logo-pic" style="height: 40px;">
+            </a>
+            <!-- Burger Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Nav Items -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-id" href="{% url 'home' %}">Начало</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-id" href="#">Консултация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-id" href="#">Инвестирай с мен</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-id" href="#">Проекти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-id" href="#">Събития</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-id" href="#">Контакти</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <nav class="nav-menu">
-            <ul class="web-nav">
-                <li><a href="{% url 'home' %}">Начало</a></li>
-                <li><a href="#">Консултация</a></li>
-                <li><a href="#">Инвестирай с мен</a></li>
-                <li><a href="#">Проекти</a></li>
-                <li><a href="#">Събития</a></li>
-                <li><a href="{% url 'contacts' %}">Контакти</a></li>
-            </ul>
-
-            <ul class="drop-down-menu">
-                <img src="/static/images/menu-button.png" alt="menu-button">
-                    <ul>
-                        <li><a href="#">Начало</a></li>
-                        <li><a href="#">Консултация</a></li>
-                        <li><a href="#">Инвестирай с мен</a></li>
-                        <li><a href="#">Проекти</a></li>
-                        <li><a href="#">Събития</a></li>
-                        <li><a href="#">Контакти</a></li>
-                    </ul>
-            </ul>
-        </nav>
+    </nav>
 </header>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,118 +1,31 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
-
-*, *::after, *::before {
-    box-sizing: border-box;
-    font: 14px/1.5 "Times New Roman", sans-serif;
+.nav-item {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
-html {
-    box-sizing: inherit;
-    font: inherit;
+.navbar-nav {
+    text-align: center;
 }
 
-* {
-    padding: 0;
-    margin: 0;
+.navbar-nav .nav-item {
+    margin: 0 10px;
 }
 
-body {
-    background-color: whitesmoke;
-    color: #333;
+.navbar-brand img {
+    height: 40px;
 }
 
 header {
-    display: flex;
-    box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.75);
-    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.logo,
-header nav {
-    flex-direction: column;
-    margin-block: 10px;
+#nav-id:hover {
+    color: #fd7f7f; !important;
 }
 
-.logo {
-    margin-left: 27px;
-}
-
-header div img {
-    width: 140px;
-}
-
-.nav-menu {
-    padding: 20px 0 20px 350px;
-}
-
-.nav-menu ul {
-    text-decoration: none;
-    list-style-type: none;
-}
-
-.nav-menu ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.nav-menu ul li > a {
-    font-size: 1.5em;
-    text-decoration: none;
-    color: #333;
-    transition: color 0.3s ease-in-out;
-}
-
-.nav-menu ul li > a:hover {
-    color: lightcoral;
-    text-decoration: underline;
-    text-decoration-color: lightcoral;
-}
-
-.drop-down-menu {
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 20px;
-}
-
-.drop-down-menu ul {
-    text-align: center;
-    display: none;
-}
-
-.drop-down-menu img {
-    width: 30px;
-    border: 1px SOLID #333;
-    border-radius: 6px;
-}
-
-.drop-down-menu ul li {
-    display: block;
-    transition: color 0.3s ease-in-out;
-}
-
-.drop-down-menu:hover ul {
-    background-color: #f4f4f4;
-    position: absolute;
-    display: block;
-    text-align: center;
-    border: 0.03em SOLID #333;
-    top: 30px;
-    left: -55px;
-    border-radius: 6px;
-    padding-left: 15px;
-}
-
-@media screen and (max-width: 1250px) {
-    .web-nav {
-        display: none;
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+        margin-top: 10px;
     }
-
-    .drop-down-menu {
-        display: block;
-    }
-
-    .drop-down-menu ul {
-        z-index: 1;
-    }
-
 }
