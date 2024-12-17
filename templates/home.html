@@ -1,97 +1,114 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles/home.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7.4.1/swiper-bundle.min.css" />
     <title>Добре дошли</title>
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    {% include 'navbar.html' %}
-    <img src="{{ open_video }}" alt="" class="open-video">
-    
-    <aside>Стоян Черелов</aside>
-    
-    <main>
-        <article>
-            <div class="personal-info">
-                <img src="{{ picture_path }}" alt="profile.pic">
-                <section>
-                    <h1>{{ title }}</h1>
-                    <br>
-                    <p>
-                    {% for text in description %}
-                        {{ text }}<br>
-                    {% endfor %}
-                    </p>
-                </section>
-            </div>
-        </article>    
-    
-        <article>
-            <div class="company-info">
-                <div class="box">
-                    <img src="{{ gif_path }}" alt="">
-                </div>
-                <section>
-                    <h1>{{ adv_title }}</h1>
-                    <p>
-                        {% for text in adv_description %}
-                            {{ text }}<br>
-                        {% endfor %}
-                    </p>
-                </section>
-            </div>
-        </article>
-    </main>
+{% include 'navbar.html' %}
 
-    <article class="comment-topic">
-        <h1 class="topic">Какво казват клиентите за Стоян Черелов</h1>
-    </article>
-    
-    <div class="comment-container">
-        <div class="swiper">
-          <!-- Additional required wrapper -->
-          <div class="swiper-wrapper">
-                {% for comment in comments %}
-                    <div class="swiper-slide">
-                        <img src="{{ comment.picture }}" alt="">
-                        <p>{{ comment.description }}</p>
-                        <h2>{{ comment.name }}</h2>
-                    </div>
-                {% endfor %}
-          </div>
-          <!-- If we need pagination -->
-          <div class="swiper-pagination"></div>
-
-          <!-- If we need navigation buttons -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-
+<div class="container">
+    <div class="tv-container">
+        <div class="tv-screen">
+            <img src="{% static 'images/stoyan-gif.gif' %}" alt="Стоян Черелов GIF">
+            <div class="text-overlay">Стоян Черелов</div>
+        </div>
+        <div class="tv-knobs">
+            <div class="tv-knob"></div>
+            <div class="tv-knob"></div>
+            <div class="tv-knob"></div>
         </div>
     </div>
+</div>
 
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.swiper', {
-          loop: true,
-            
-          pagination: {
-            el: '.swiper-pagination',
-              clickable: true
-          },
-            
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-            
-        });
-    </script>
+<section class="container my-5 d-flex flex-row-reverse align-items-center">
+    <div class="col-md-6">
+        <p class="text-muted small fw-bold">Кой е</p>
+        <h1 class="display-4 fw-bold">Стоян Черелов</h1>
+        <p>Стоян Черелов е най-известният брокер в България с <strong>над 170 000 последователи</strong> в
+            социалните мрежи.</p>
+        <p>Написа първата по рода си книга за брокери "<strong>Прави сделки като луд</strong>", която...</p>
+    </div>
 
-    <footer>
-        Created by Alexander Bedrosyan
-    </footer>
+    <div class="col-md-6 position-relative">
+        <img src="{% static 'images/profile.jpg' %}" alt="Димитър Калайджиев" class="img-fluid rounded">
+    </div>
+</section>
+
+<div id="mini-tv" class="position-fixed bottom-0 end-0 m-3">
+    <div class="tv-frame">
+        <video id="tv-video" src="{% static 'images/stoyan-gif.gif' %}" muted autoplay loop class="img-fluid"></video>
+        <div class="tv-overlay" onclick="openModal()"></div>
+    </div>
+</div>
+
+<div id="mini-tv" class="position-fixed bottom-0 end-0 m-3">
+    <div class="tv-frame position-relative">
+        <iframe id="mini-tv-video"
+                width="200"
+                height="113"
+                src="https://www.youtube.com/embed/KUvOUxkQpGg?autoplay=1&mute=1&loop=1&playlist=KUvOUxkQpGg"
+                title="YouTube video"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+        </iframe>
+        <div class="tv-overlay position-absolute top-0 start-0 w-100 h-100" onclick="openModal()"></div>
+    </div>
+</div>
+
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="videoModalLabel">Стоян Черелов</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Затвори"></button>
+            </div>
+            <div class="modal-body p-0">
+                <iframe id="modal-video"
+                        width="100%"
+                        height="500"
+                        src="https://www.youtube.com/embed/KUvOUxkQpGg?autoplay=1"
+                        title="YouTube video"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const miniTvVideoId = 'KUvOUxkQpGg';
+    const modalVideoIframe = document.getElementById('modal-video');
+    const modalElement = document.getElementById('videoModal');
+    const bootstrapModal = new bootstrap.Modal(modalElement);
+
+    function openModal() {
+        // Генерира линк за видеото със звук
+        const modalVideoSrc = `https://www.youtube.com/embed/${miniTvVideoId}?autoplay=1`;
+        modalVideoIframe.src = modalVideoSrc;
+
+        const miniTvIframe = document.getElementById('mini-tv-video');
+        miniTvIframe.src = "";
+
+        bootstrapModal.show();
+    }
+
+    modalElement.addEventListener('hidden.bs.modal', () => {
+        modalVideoIframe.src = "";
+
+        const miniTvIframe = document.getElementById('mini-tv-video');
+        miniTvIframe.src = `https://www.youtube.com/embed/${miniTvVideoId}?autoplay=1&mute=1&loop=1&playlist=${miniTvVideoId}`;
+    });
+</script>
+
 </body>
 </html>
