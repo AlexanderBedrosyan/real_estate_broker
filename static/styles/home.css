@@ -3,7 +3,7 @@
 .tv-container {
     position: relative;
     max-width: 900px;
-    margin: 50px auto;
+    margin: 100px auto;
     background: #2b2b2b;
     border: 20px solid #222;
     border-radius: 30px;
@@ -113,23 +113,80 @@ iframe {
 }
 
 
+.carousel {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.carousel-inner {
+    text-align: center;
+}
+
+.carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.text-warning {
+    color: #f0ad4e !important;
+}
+
+
+.btn-custom {
+    background-color: #c49f3c !important;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #a4802e !important;
+    color: #fff;
+}
+
+.dark-section {
+    background-color: #1f1c1c;
+}
+
+.dark-section h5 {
+    color: #c49f3c;
+}
+
+.dark-section ul {
+    padding: 0;
+    line-height: 1.8;
+}
+
+.dark-section li {
+    color: #dcdcdc;
+    font-size: 0.9rem;
+}
+
+
+
 @media (max-width: 768px) {
     .text-overlay {
         font-size: 1.5em;
     }
 
     .d-flex.flex-row-reverse {
-        flex-direction: column-reverse !important;
+        flex-direction: column-reverse;
+    }
 
     .d-flex.flex-row-reverse .col-md-6 {
-        width: 100%; /* Ширината на всеки елемент става 100% */
-        text-align: center; /* Центрира текста, ако желаеш */
+        width: 100%;
+        text-align: center;
     }
 
     .d-flex.flex-row-reverse img {
-        width: 100%; /* Снимката заема цялата ширина */
-        height: auto; /* Запазва пропорциите */
-        margin-bottom: 1rem; /* Добавя отстояние под снимката */
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
     }
 }
 

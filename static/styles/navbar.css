@@ -20,7 +20,7 @@ header {
 }
 
 #nav-id:hover {
-    color: #fd7f7f; !important;
+    color: #fd7f7f !important;
 }
 
 @media (max-width: 991px) {
