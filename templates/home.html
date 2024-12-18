@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-{% include 'navbar.html' %}
+{% include 'common/navbar.html' %}
 
 <div class="container">
     <div class="tv-container">
@@ -36,7 +36,7 @@
     </div>
 
     <div class="col-md-6 position-relative">
-        <img src="{% static 'images/profile.jpg' %}" alt="Димитър Калайджиев" class="img-fluid rounded">
+        <img src="{% static 'images/profile.png' %}" alt="Димитър Калайджиев" class="img-fluid rounded">
     </div>
 </section>
 
@@ -83,6 +83,8 @@
         </div>
     </div>
 </div>
+
+{% include 'common/footer.html' %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
