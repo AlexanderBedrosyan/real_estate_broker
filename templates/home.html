@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Добре дошли</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles/home.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -84,33 +85,114 @@
     </div>
 </div>
 
+<div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 small">„Димитър винаги ми предлага лош подбор на прически, които иска да му
+                        направя, но за сметка на това е перфектен в подбора на имоти!“</p>
+                    <h5 class="fw-bold text-white">Георги Петков</h5>
+                    <p class="text-warning small">коафьор (ама не обикновен, а на звездите)</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/profile-1.jpg' %}" class="img-fluid rounded" alt="Георги Петков">
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 small">„Димитър е невероятен в работата си, намери ми мечтания дом за нула
+                        време!“</p>
+                    <h5 class="fw-bold text-white">Иван Иванов</h5>
+                    <p class="text-warning small">собственик на малка империя</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/profile-1.jpg' %}" class="img-fluid rounded" alt="Иван Иванов">
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-white-50 small">„Димитър винаги успява да ме впечатли с професионализма си и
+                        вниманието към детайла!“</p>
+                    <h5 class="fw-bold text-white">Мария Петрова</h5>
+                    <p class="text-warning small">инфлуенсър</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'images/profile-1.jpg' %}" class="img-fluid rounded" alt="Мария Петрова">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container text-center my-5 py-5">
+    <h2 class="fw-bold">ИМАШ ЛИ НУЖДА ОТ ПОМОЩ?</h2>
+    <p class="mb-4">
+        Димитър Калайджиев е най-известният брокер в България, който е с над 10 години опит в недвижимите имоти.
+        Инфлуенсър с над 160 000 последователи в социалните мрежи.
+    </p>
+    <a href="#" class="btn btn-custom px-4 py-2">Запази Консултация</a>
+</div>
+
+<!-- Тъмен блок (не-footer) -->
+<div class="dark-section text-white py-4">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <!-- Колона: Влез в общности -->
+            <div class="col-md-4 col-12 mb-4">
+                <h5 class="fw-bold">ВЛЕЗ В МОИТЕ ОБЩНОСТИ</h5>
+                <ul class="list-unstyled">
+                    <li><a href="https://facebook.com" target="_blank" class="text-white text-decoration-none">Facebook Общност</a></li>
+                    <li><a href="https://instagram.com" target="_blank" class="text-white text-decoration-none">Instagram Общност</a></li>
+                    <li><a href="https://viber.com" target="_blank" class="text-white text-decoration-none">Viber Общност</a></li>
+                    <li><a href="https://discord.com" target="_blank" class="text-white text-decoration-none">Discord Общност</a></li>
+                </ul>
+            </div>
+            <!-- Колона: Други -->
+            <div class="col-md-4 col-12 mb-4">
+                <h5 class="fw-bold">ДРУГИ</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Общи условия за използване</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Политика за поверителност</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Политика за бисквитки</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Политика за връщане</a></li>
+                </ul>
+            </div>
+            <!-- Колона: Меню -->
+            <div class="col-md-4 col-12 mb-4">
+                <h5 class="fw-bold">МЕНЮ</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Начало</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Консултация</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Събития</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Проекти</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 {% include 'common/footer.html' %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    const miniTvVideoId = 'KUvOUxkQpGg';
-    const modalVideoIframe = document.getElementById('modal-video');
-    const modalElement = document.getElementById('videoModal');
-    const bootstrapModal = new bootstrap.Modal(modalElement);
-
-    function openModal() {
-        // Генерира линк за видеото със звук
-        const modalVideoSrc = `https://www.youtube.com/embed/${miniTvVideoId}?autoplay=1`;
-        modalVideoIframe.src = modalVideoSrc;
-
-        const miniTvIframe = document.getElementById('mini-tv-video');
-        miniTvIframe.src = "";
-
-        bootstrapModal.show();
-    }
-
-    modalElement.addEventListener('hidden.bs.modal', () => {
-        modalVideoIframe.src = "";
-
-        const miniTvIframe = document.getElementById('mini-tv-video');
-        miniTvIframe.src = `https://www.youtube.com/embed/${miniTvVideoId}?autoplay=1&mute=1&loop=1&playlist=${miniTvVideoId}`;
-    });
-</script>
+<script src="{% static 'javascript/home.js' %}"></script>
 
 </body>
 </html>
