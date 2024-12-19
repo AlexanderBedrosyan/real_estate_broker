@@ -27,8 +27,8 @@
     </div>
 </div>
 
-<section class="container my-5 d-flex flex-row-reverse align-items-center">
-    <div class="col-md-6">
+<section class="container my-5 d-flex flex-column-reverse flex-md-row-reverse align-items-center">
+    <div class="col-12 col-md-6 text-center text-md-start">
         <p class="text-muted small fw-bold">Кой е</p>
         <h1 class="display-4 fw-bold">Стоян Черелов</h1>
         <p>Стоян Черелов е най-известният брокер в България с <strong>над 170 000 последователи</strong> в
@@ -36,7 +36,7 @@
         <p>Написа първата по рода си книга за брокери "<strong>Прави сделки като луд</strong>", която...</p>
     </div>
 
-    <div class="col-md-6 position-relative">
+    <div class="col-12 col-md-6 text-center mb-4 mb-md-0">
         <img src="{% static 'images/profile.png' %}" alt="Димитър Калайджиев" class="img-fluid rounded">
     </div>
 </section>
@@ -87,47 +87,37 @@
 
 <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
     <div class="carousel-inner">
+        {% if first_comment %}
         <div class="carousel-item active">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="text-white-50 small">„Димитър винаги ми предлага лош подбор на прически, които иска да му
-                        направя, но за сметка на това е перфектен в подбора на имоти!“</p>
-                    <h5 class="fw-bold text-white">Георги Петков</h5>
-                    <p class="text-warning small">коафьор (ама не обикновен, а на звездите)</p>
+                    <p class="text-white-50 small">„{{ first_comment.short_message }}“</p>
+                    <h5 class="fw-bold text-white">{{ first_comment.first_name }} {{ first_comment.last_name }}</h5>
+                    <p class="text-warning small">{{ first_comment.profession }}</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="{% static 'images/profile-1.jpg' %}" class="img-fluid rounded" alt="Георги Петков">
+                    <img src="{{ first_comment.picture_url }}" class="img-fluid rounded" alt="Георги Петков">
                 </div>
             </div>
         </div>
+        {% endif %}
 
+        {% for comment in comments %}
         <div class="carousel-item">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="text-white-50 small">„Димитър е невероятен в работата си, намери ми мечтания дом за нула
-                        време!“</p>
-                    <h5 class="fw-bold text-white">Иван Иванов</h5>
-                    <p class="text-warning small">собственик на малка империя</p>
+                    <p class="text-white-50 small">„{{ comment.short_message }}“</p>
+                    <h5 class="fw-bold text-white">{{ comment.first_name }} {{ comment.last_name }}</h5>
+                    <p class="text-warning small">{{ comment.profession }}</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="{% static 'images/profile-1.jpg' %}" class="img-fluid rounded" alt="Иван Иванов">
+                    <img src="{{ comment.picture_url }}" class="img-fluid rounded" alt="Иван Иванов">
                 </div>
             </div>
         </div>
+        {% endfor %}
 
-        <div class="carousel-item">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="text-white-50 small">„Димитър винаги успява да ме впечатли с професионализма си и
-                        вниманието към детайла!“</p>
-                    <h5 class="fw-bold text-white">Мария Петрова</h5>
-                    <p class="text-warning small">инфлуенсър</p>
-                </div>
-                <div class="col-md-6">
-                    <img src="{% static 'images/profile-1.jpg' %}" class="img-fluid rounded" alt="Мария Петрова">
-                </div>
-            </div>
-        </div>
+ 
     </div>
 
     <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
@@ -143,17 +133,16 @@
 <div class="container text-center my-5 py-5">
     <h2 class="fw-bold">ИМАШ ЛИ НУЖДА ОТ ПОМОЩ?</h2>
     <p class="mb-4">
-        Димитър Калайджиев е най-известният брокер в България, който е с над 10 години опит в недвижимите имоти.
-        Инфлуенсър с над 160 000 последователи в социалните мрежи.
+        Стоян Черелов е професионалист с дългогодишен опит в сферата на недвижимите имоти. Участвал е в над 100 проекта, 
+        което го прави сред най-успешните брокери в бургаска област!
     </p>
     <a href="#" class="btn btn-custom px-4 py-2">Запази Консултация</a>
 </div>
 
-<!-- Тъмен блок (не-footer) -->
+
 <div class="dark-section text-white py-4">
     <div class="container">
         <div class="row justify-content-center text-center">
-            <!-- Колона: Влез в общности -->
             <div class="col-md-4 col-12 mb-4">
                 <h5 class="fw-bold">ВЛЕЗ В МОИТЕ ОБЩНОСТИ</h5>
                 <ul class="list-unstyled">
