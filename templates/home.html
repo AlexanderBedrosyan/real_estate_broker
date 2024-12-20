@@ -17,7 +17,7 @@
     <div class="tv-container">
         <div class="tv-screen">
             <img src="{% static 'images/stoyan-gif.gif' %}" alt="Стоян Черелов GIF">
-            <div class="text-overlay">Стоян Черелов</div>
+            <div class="text-overlay">{{ customer.first_name }} {{ customer.last_name }}</div>
         </div>
         <div class="tv-knobs">
             <div class="tv-knob"></div>
@@ -67,7 +67,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="videoModalLabel">Стоян Черелов</h5>
+                <h5 class="modal-title" id="videoModalLabel">{{ customer.first_name }} {{ customer.last_name }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Затвори"></button>
             </div>
             <div class="modal-body p-0">
