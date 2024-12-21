@@ -41,6 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function appendMuteToYouTubeURL(url) {
     const urlObj = new URL(url);
-    urlObj.searchParams.set("mute", "1"); 
+    urlObj.searchParams.set("mute", "1");
     return urlObj.toString();
 }
