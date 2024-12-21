@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
-from .models import Comments
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, CreateView
+from .models import Comments, Consultation
 from ..account.models import CustomerModel
-
+from .forms import ConsultationCreateForm
 
 # Create your views here.
 
@@ -38,3 +39,10 @@ class ContactsView(TemplateView):
         context['customer'] = customer
 
         return context
+
+
+class ConsultationView(CreateView):
+    template_name = 'consultation.html'
+    model = Consultation
+    form_class = ConsultationCreateForm
+    success_url = reverse_lazy('home')
