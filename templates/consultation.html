@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Консултация</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles/consultation.css' %}">
+</head>
+<body>
+{% include 'common/navbar.html' %}
+
+<div class="video-background">
+        <video autoplay loop muted playsinline>
+            <source src="https://videos.pexels.com/video-files/2836030/2836030-uhd_2560_1440_24fps.mp4" type="video/mp4">
+            Вашият браузър не поддържа видеа.
+        </video>
+    </div>
+
+    <div class="overlay">
+        <div class="container d-flex justify-content-center align-items-center vh-100">
+            <div class="form-container p-5 bg-white bg-opacity-75 rounded shadow">
+                <h2 class="text-center mb-4">Заявка за Консултация</h2>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Изпрати Заявката</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% include 'common/footer.html' %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
