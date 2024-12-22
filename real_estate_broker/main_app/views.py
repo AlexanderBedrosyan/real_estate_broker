@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView
-from .models import Comments, Consultation
+from django.views.generic import TemplateView, CreateView, ListView
+from .models import Comments, Consultation, Event
 from ..account.models import CustomerModel
 from .forms import ConsultationCreateForm
 
@@ -46,3 +46,9 @@ class ConsultationView(CreateView):
     model = Consultation
     form_class = ConsultationCreateForm
     success_url = reverse_lazy('home')
+
+
+class EventsView(ListView):
+    template_name = 'events.html'
+    model = Event
+    paginate_by = 3

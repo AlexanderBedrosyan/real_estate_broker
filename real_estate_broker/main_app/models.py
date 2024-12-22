@@ -59,3 +59,15 @@ class Consultation(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+
+class Event(models.Model):
+    title = models.CharField(
+        max_length=200
+    )
+    description = models.TextField()
+    image = models.URLField()
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return self.title
