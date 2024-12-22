@@ -53,6 +53,7 @@ class Contact(models.Model):
         related_name='contacts'
     )
     phone_number = models.CharField(
+        max_length=100,
         blank=False,
         null=False,
         validators=[IsItAPhoneNumber()]
