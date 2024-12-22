@@ -15,12 +15,20 @@ class ConsultationCreateForm(BaseConsultationForm):
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Фамилия...'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Електронна поща...'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Телефон за връзка...'}),
-            'choices': forms.Select(attrs={'class': 'form-control'})
+            'choices': forms.Select(attrs={'class': 'form-control'}),
+            'consultation_datetime': forms.DateTimeInput(
+                attrs={
+                    'class': 'form-control',
+                    'type': 'datetime-local',
+                    'placeholder': 'Изберете дата и час...'
+                }
+            )
         }
         labels = {
             'first_name': 'Първо име',
             'last_name': 'Фамилия',
             'email': 'Електронна поща',
             'phone_number': 'Телефон за връзка',
-            'choices': 'Консултация за:'
+            'choices': 'Консултация за:',
+            'consultation_datetime': 'Дата и час за консултация'
         }
