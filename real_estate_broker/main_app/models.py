@@ -1,5 +1,5 @@
 from django.db import models
-from .validators import IsItAPhoneNumber
+from .validators import IsItAPhoneNumber, DateChecker
 from .choices import ConsultationChoices
 
 # Create your models here.
@@ -50,6 +50,11 @@ class Consultation(models.Model):
         choices=ConsultationChoices.choices,
         blank=False,
         null=False
+    )
+    consultation_datetime = models.DateTimeField(
+        blank=False,
+        null=False,
+        validators=[DateChecker()]
     )
 
     def __str__(self):
