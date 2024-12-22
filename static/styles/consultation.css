@@ -1,3 +1,10 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+}
+
 .video-background {
     position: fixed;
     top: 0;
@@ -12,7 +19,7 @@
     min-width: 100%;
     min-height: 100%;
     object-fit: cover;
-    filter: brightness(1.5);
+    filter: brightness(1.3);
 }
 
 .overlay {
@@ -22,6 +29,7 @@
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.05);
+    overflow-y: auto;
 }
 
 .form-container {
@@ -30,5 +38,12 @@
     backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 0.5rem;
+}
+
+@media (max-width: 991px) {
+    .form-container {
+        margin-top: 100px !important;
+        margin-bottom: 100px;
+    }
 }
 
