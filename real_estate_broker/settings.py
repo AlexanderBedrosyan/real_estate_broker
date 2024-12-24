@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'real_estate_broker.main_app',
-    'real_estate_broker.account'
+    'real_estate_broker.account',
+    'real_estate_broker.common',
 ]
 
 MIDDLEWARE = [
