@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Събития</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/invest_with_me.css' %}">
+</head>
+<body>
+{% include 'common/navbar.html' %}
+
+<div class="video-background">
+    <video autoplay loop muted playsinline>
+        <source src="https://videos.pexels.com/video-files/2836030/2836030-uhd_2560_1440_24fps.mp4" type="video/mp4">
+        Вашият браузър не поддържа видеа.
+    </video>
+</div>
+
+<div class="content text-center py-5" style="margin-top: 100px">
+    <h1 class="fw-bold mb-4">Три причини да инвестираш с мен</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card bg-light text-dark shadow animated-card" id="card1">
+                    <div class="card-body">
+                        <h5 class="card-title">Доверие и професионализъм</h5>
+                        <p class="card-text">Над 10 години опит в инвестициите и личните финанси.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light text-dark shadow animated-card" id="card2">
+                    <div class="card-body">
+                        <h5 class="card-title">Индивидуален подход</h5>
+                        <p class="card-text">Всеки клиент получава персонализиран план за успех.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light text-dark shadow animated-card" id="card3">
+                    <div class="card-body">
+                        <h5 class="card-title">Доказани резултати</h5>
+                        <p class="card-text">Множество успешни клиенти, които са постигнали своите цели.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5" style="border-color: white; border-radius: 20px">
+            <a href="{% url 'consultation' %}" class="btn btn-secondary btn-lg" style="border-color: white;">Запази Консултация</a>
+        </div>
+    </div>
+</div>
+
+{% include 'common/footer.html' %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-9ndCyUa3Y6oz8z2oO3uo0Q8v0xHfp3yJGz6/sb8Pj93g5fNQ9T5u7vV/jXkgJmNf" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // JavaScript for animating cards
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => document.getElementById("card1").classList.add("show"), 300);
+        setTimeout(() => document.getElementById("card2").classList.add("show"), 600);
+        setTimeout(() => document.getElementById("card3").classList.add("show"), 900);
+    });
+</script>
+</body>
+</html>
