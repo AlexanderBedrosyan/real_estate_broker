@@ -151,23 +151,23 @@
                     <li><a href="https://discord.com" target="_blank" class="text-white text-decoration-none">Discord Общност</a></li>
                 </ul>
             </div>
-            <!-- Колона: Други -->
+
             <div class="col-md-4 col-12 mb-4">
                 <h5 class="fw-bold">ДРУГИ</h5>
                 <ul class="list-unstyled">
                     <li><a href="{% url 'terms-of-use' %}" class="text-white text-decoration-none">Общи условия за използване</a></li>
                     <li><a href="{% url 'privacy-policy' %}" class="text-white text-decoration-none">Политика за поверителност</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Политика за бисквитки</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Политика за връщане</a></li>
+                    <li><a href="{% url 'cookie-policy' %}" class="text-white text-decoration-none">Политика за бисквитки</a></li>
+                    <li><a href="{% url 'return-policy' %}" class="text-white text-decoration-none">Политика за връщане</a></li>
                 </ul>
             </div>
-            <!-- Колона: Меню -->
+
             <div class="col-md-4 col-12 mb-4">
                 <h5 class="fw-bold">МЕНЮ</h5>
                 <ul class="list-unstyled">
                     <li><a href="{% url 'home' %}" class="text-white text-decoration-none">Начало</a></li>
                     <li><a href="{% url 'consultation' %}" class="text-white text-decoration-none">Консултация</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Събития</a></li>
+                    <li><a href="{% url 'events' %}" class="text-white text-decoration-none">Събития</a></li>
                     <li><a href="#" class="text-white text-decoration-none">Проекти</a></li>
                 </ul>
             </div>
