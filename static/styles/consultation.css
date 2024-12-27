@@ -38,11 +38,12 @@ body, html {
     backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 0.5rem;
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
 
 @media (max-width: 991px) {
     .form-container {
-        margin-top: 100px !important;
         margin-bottom: 100px;
     }
 }

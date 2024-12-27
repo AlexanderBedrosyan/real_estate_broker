@@ -52,3 +52,7 @@ class EventsView(ListView):
     template_name = 'events.html'
     model = Event
     paginate_by = 3
+
+
+class InvestWithMeView(TemplateView):
+    template_name = 'invest_with_me.html'
