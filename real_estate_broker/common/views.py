@@ -9,3 +9,11 @@ class TermsOfUseView(TemplateView):
 
 class PrivacyPolicyView(TemplateView):
     template_name = 'common/privacy_policy.html'
+
+
+class CookiePolicyView(TemplateView):
+    template_name = 'common/cookie_policy.html'
+
+
+class ReturnPolicyView(TemplateView):
+    template_name = 'common/return_policy.html'
