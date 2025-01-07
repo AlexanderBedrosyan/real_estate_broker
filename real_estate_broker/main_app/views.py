@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView, CreateView, ListView, DetailView
 from .models import Comments, Consultation, Event
 from ..account.models import CustomerModel
 from .forms import ConsultationCreateForm
@@ -56,3 +56,9 @@ class EventsView(ListView):
 
 class InvestWithMeView(TemplateView):
     template_name = 'invest_with_me.html'
+
+
+class EventsDetailsView(DetailView):
+    pk_url_kwarg = 'pk'
+    model = Event
+    template_name = 'event_details.html'
