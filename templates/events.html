@@ -29,7 +29,7 @@
                 <div class="event-content">
                     <h5 class="event-title">{{ event.title }}</h5>
                     <p class="event-description">{{ event.description|truncatewords:15 }}</p>
-                    <a href="#" class="btn btn-secondary btn-sm">Виж повече</a>
+                    <a href="{% url 'event-details' event.id %}" class="btn btn-secondary btn-sm">Виж повече</a>
                 </div>
             </div>
         </div>
