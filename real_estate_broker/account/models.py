@@ -66,3 +66,6 @@ class Contact(models.Model):
         blank=False,
         null=False
     )
+
+    def __str__(self):
+        return self.account.first_name + ' ' + self.account.last_name
