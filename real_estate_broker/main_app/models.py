@@ -68,6 +68,14 @@ class Event(models.Model):
     description = models.TextField()
     image = models.URLField()
     date = models.DateTimeField()
+    location = models.CharField(
+        max_length=300,
+        default='Бургас'
+    )
+    organizer = models.CharField(
+        max_length=300,
+        default='Стоян Черелов'
+    )
 
     def __str__(self):
         return self.title
