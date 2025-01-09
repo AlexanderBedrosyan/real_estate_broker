@@ -17,14 +17,12 @@
     min-height: 100%;
 }
 
-/* Основен контейнер за съдържание */
 .content {
     position: relative;
     z-index: 1;
     color: white;
 }
 
-/* Анимации за картите */
 .animated-card {
     opacity: 0;
     transform: translateY(50px);
@@ -34,4 +32,8 @@
 .animated-card.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+.card.bg-light {
+    background: rgba(255, 255, 255, 0.9) !important;
 }
