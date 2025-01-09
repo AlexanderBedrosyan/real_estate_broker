@@ -188,5 +188,8 @@ iframe {
         height: auto;
         margin-bottom: 1rem;
     }
+    body > header > nav > div {
+        margin-inline: 11px !important;
+    }
 }
 
