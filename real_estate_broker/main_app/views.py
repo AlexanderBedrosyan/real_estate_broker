@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, ListView, DetailView
-from .models import Comments, Consultation, Event
+from .models import Comments, Consultation, Event, Project
 from ..account.models import CustomerModel
 from .forms import ConsultationCreateForm
 
@@ -62,3 +62,17 @@ class EventsDetailsView(DetailView):
     pk_url_kwarg = 'pk'
     model = Event
     template_name = 'event_details.html'
+
+
+class ProjectListView(ListView):
+    model = Project
+    template_name = 'projects.html'
+    context_object_name = 'object_list'
+    paginate_by = 6
+
+
+class ProjectDetailView(DetailView):
+    model = Project
+    template_name = 'project_detail.html'
+    context_object_name = 'project'
+    pk_url_kwarg = 'id'
