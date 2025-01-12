@@ -21,3 +21,24 @@ video {
 .container.my-5 {
     margin-top: 200px;
 }
+
+.pagination-container .page-item .page-link {
+    color: #9b9b9b;
+    background: #fff;
+    border-radius: 5px;
+    margin: 0 3px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #dee2e6;
+}
+
+.pagination-container .page-item.active .page-link {
+    background: #9b9b9b;
+    color: #fff;
+}
+
+.pagination-container .page-item .page-link:hover {
+    background: #9dcce0;
+    color: #fff;
+    border-color: #0c2c56;
+}
