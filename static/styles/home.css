@@ -168,7 +168,6 @@ iframe {
 }
 
 
-
 @media (max-width: 768px) {
     .text-overlay {
         font-size: 1.5em;
@@ -188,8 +187,14 @@ iframe {
         height: auto;
         margin-bottom: 1rem;
     }
+
     body > header > nav > div {
         margin-inline: 11px !important;
+    }
+
+    #mini-tv {
+        width: 100px;
+        height: 56.5px;
     }
 }
 
