@@ -68,7 +68,7 @@ class ProjectListView(ListView):
     model = Project
     template_name = 'projects.html'
     context_object_name = 'object_list'
-    paginate_by = 6
+    paginate_by = 3
 
 
 class ProjectDetailView(DetailView):
