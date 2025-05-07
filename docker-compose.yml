@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: django_app_2
+    ports:
+      - "8050:8050"
+    volumes:
+      - .:/app
+    environment:
+      - DEBUG=1
+      - DB_NAME=estate_db
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8050"
+
+  db:
+    image: postgres:14
+    container_name: postgres_db_060525
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5440:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
+volumes:
+  pgdata:
