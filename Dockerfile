@@ -6,18 +6,18 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY requirements.txt /app/
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app/
+COPY . .
 
 RUN curl -o wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
     chmod +x wait-for-it.sh
 
 ENV PYTHONUNBUFFERED 1
 
-
 EXPOSE 8050
 
 CMD ["sh", "-c", "./wait-for-it.sh db:5432 -- python manage.py migrate && python manage.py runserver 0.0.0.0:8050"]
+
 
