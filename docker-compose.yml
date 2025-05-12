@@ -7,8 +7,6 @@ services:
     container_name: django_app_2
     ports:
       - "8050:8050"
-    volumes:
-      - .:/app
     env_file:
       - .env
     depends_on:
