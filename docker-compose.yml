@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
     command: >
-      sh -c "python manage.py migrate &&
+      sh -c "./wait-for-it.sh $DB_HOST:$DB_PORT -- python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8050"
 
   db:
@@ -21,7 +21,7 @@ services:
     env_file:
       - .env
     ports:
-      - "5440:5432"
+      - "5440:5432"  # локален порт
     volumes:
       - pgdata:/var/lib/postgresql/data/
 
