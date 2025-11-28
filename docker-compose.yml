@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: django_app_2
     ports:
-      - "8050:8050"
+      - "5440:5432"
     env_file:
       - .env
     depends_on:
