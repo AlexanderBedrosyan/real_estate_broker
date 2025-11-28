@@ -34,3 +34,4 @@ EXPOSE 8050
 
 # CMD използва .env за host и port
 CMD ["sh", "-c", "./wait-for-it.sh $DB_HOST:$DB_PORT -t 60 -- python manage.py migrate && python manage.py runserver 0.0.0.0:8050"]
+
