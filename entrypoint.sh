@@ -1,6 +1,7 @@
 #!/bin/sh
 # Скрипт за изчакване на базата преди стартиране на Django
 
+echo "ENV debug:"
 echo "DB_HOST=$DB_HOST"
 echo "DB_PORT=$DB_PORT"
 echo "DB_NAME=$DB_NAME"
@@ -13,15 +14,16 @@ while ! python - <<END
 import psycopg2, os
 try:
     conn = psycopg2.connect(
-        host=os.environ["DB_HOST"],
-        port=int(os.environ["DB_PORT"]),
-        database=os.environ["DB_NAME"],
-        user=os.environ["DB_USER"],
-        password=os.environ["DB_PASSWORD"]
+        host=os.environ.get("DB_HOST", "db"),
+        port=int(os.environ.get("DB_PORT", 5432)),
+        database=os.environ.get("DB_NAME", "postgres"),
+        user=os.environ.get("DB_USER", "postgres"),
+        password=os.environ.get("DB_PASSWORD", "postgres")
     )
     conn.close()
     exit(0)
-except:
+except Exception as e:
+    print("Database connection error:", e)
     exit(1)
 END
 do

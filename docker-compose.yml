@@ -10,12 +10,14 @@ services:
       - "5440:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data/
+    networks:
+      - app_net
 
   django:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: django_app_2
+    container_name: django_app
     env_file:
       - .env
     depends_on:
@@ -28,6 +30,12 @@ services:
       DB_PASSWORD: postgres
     ports:
       - "8050:8050"
+    networks:
+      - app_net
 
 volumes:
   pgdata:
+
+networks:
+  app_net:
+    driver: bridge
