@@ -17,7 +17,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: django_app
+    container_name: django_app_2
     env_file:
       - .env
     depends_on:
