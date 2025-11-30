@@ -1,4 +1,5 @@
 version: "3.9"
+
 services:
   django:
     build:
@@ -6,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: django_app_2
     ports:
-      - "5540:5432"
+      - "8050:8050"
     env_file:
       - .env
     depends_on:
@@ -21,7 +22,7 @@ services:
     env_file:
       - .env
     ports:
-      - "5440:5432"  # локален порт
+      - "5440:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data/
 
