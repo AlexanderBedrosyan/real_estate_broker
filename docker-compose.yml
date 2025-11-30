@@ -20,6 +20,12 @@ services:
       - .env
     depends_on:
       - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
     ports:
       - "8050:8050"
 
