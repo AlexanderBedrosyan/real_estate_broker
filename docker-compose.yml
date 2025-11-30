@@ -15,18 +15,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: django_app_2
+    container_name: django_app
     env_file:
       - .env
     depends_on:
       - db
     ports:
       - "8050:8050"
-    command: >
-      sh -c "python -c 'import time, psycopg2, os; retry=0; 
-while True: 
- try: psycopg2.connect(host=os.environ.get(\"DB_HOST\",\"db\"), port=int(os.environ.get(\"DB_PORT\",5432)), database=os.environ.get(\"DB_NAME\",\"postgres\"), user=os.environ.get(\"DB_USER\",\"postgres\"), password=os.environ.get(\"DB_PASSWORD\",\"postgres\")); break 
- except: retry+=1; print(f\"DB not ready, retrying ({retry})\"); time.sleep(3)'; python manage.py migrate && python manage.py runserver 0.0.0.0:8050"
 
 volumes:
   pgdata:
