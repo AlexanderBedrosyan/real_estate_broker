@@ -1,41 +1,118 @@
+# version: "3.9"
+
+# services:
+#   db:
+#     image: postgres:14
+#     container_name: postgres_db
+#     env_file:
+#       - .env
+#     ports:
+#       - "5440:5432"
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data/
+#     networks:
+#       - app_net
+
+#   django:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: django_app_2
+#     env_file:
+#       - .env
+#     depends_on:
+#       - db
+#     environment:
+#       DB_HOST: db
+#       DB_PORT: 5432
+#       DB_NAME: postgres
+#       DB_USER: postgres
+#       DB_PASSWORD: postgres
+#     ports:
+#       - "8050:8050"
+#     networks:
+#       - app_net
+
+# volumes:
+#   pgdata:
+
+# networks:
+#   app_net:
+#     driver: bridge
+
+
 version: "3.9"
 
 services:
-  db:
-    image: postgres:14
-    container_name: postgres_db
-    env_file:
-      - .env
-    ports:
-      - "5440:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data/
-    networks:
-      - app_net
+db:
+image: postgres:14
+container_name: postgres_db
+env_file:
+- .env
+ports:
+- "5440:5432"
+volumes:
+- pgdata:/var/lib/postgresql/data/
+networks:
+- app_net
 
-  django:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: django_app_2
-    env_file:
-      - .env
-    depends_on:
-      - db
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_NAME: postgres
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-    ports:
-      - "8050:8050"
-    networks:
-      - app_net
+django:
+build:
+context: .
+dockerfile: Dockerfile
+container_name: django_app_2
+env_file:
+- .env
+depends_on:
+- db
+environment:
+DB_HOST: db
+DB_PORT: 5432
+DB_NAME: postgres
+DB_USER: postgres
+DB_PASSWORD: postgres
+VIRTUAL_HOST: stoyancherelov.com,[www.stoyancherelov.com](http://www.stoyancherelov.com)
+LETSENCRYPT_HOST: stoyancherelov.com,[www.stoyancherelov.com](http://www.stoyancherelov.com)
+LETSENCRYPT_EMAIL: admin@stoyancherelov.com
+expose:
+- "8050"
+networks:
+- app_net
+
+nginx-proxy:
+image: jwilder/nginx-proxy
+container_name: nginx_proxy
+restart: always
+ports:
+- "80:80"
+- "443:443"
+volumes:
+- /var/run/docker.sock:/tmp/docker.sock:ro
+- ./nginx/certs:/etc/nginx/certs:rw
+- ./nginx/vhost.d:/etc/nginx/vhost.d
+- ./nginx/html:/usr/share/nginx/html
+networks:
+- app_net
+
+letsencrypt:
+image: jrcs/letsencrypt-nginx-proxy-companion
+container_name: letsencrypt
+environment:
+NGINX_PROXY_CONTAINER: nginx-proxy
+volumes:
+- /var/run/docker.sock:/var/run/docker.sock:ro
+- ./nginx/certs:/etc/nginx/certs:rw
+- ./nginx/vhost.d:/etc/nginx/vhost.d
+- ./nginx/html:/usr/share/nginx/html
+depends_on:
+- nginx-proxy
+networks:
+- app_net
 
 volumes:
-  pgdata:
+pgdata:
 
 networks:
-  app_net:
-    driver: bridge
+app_net:
+driver: bridge
+
