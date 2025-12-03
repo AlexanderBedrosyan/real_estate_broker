@@ -39,6 +39,8 @@ import os
 from django.contrib.auth import get_user_model
 import django
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "real_estate_broker.settings")
+
 django.setup()
 User = get_user_model()
 
