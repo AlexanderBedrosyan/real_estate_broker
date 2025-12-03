@@ -1,66 +1,86 @@
 const miniTvVideoId = 'KUvOUxkQpGg';
 
+function buildEmbedSrc(videoId, { autoplay=false, loop=false } = {}) {
+    const params = new URLSearchParams();
+    if (autoplay) params.set('autoplay', '1');
+    // mute is required for autoplay in many browsers
+    params.set('mute', '1');
+    if (loop) {
+        params.set('loop', '1');
+        params.set('playlist', videoId);
+    }
+    // enable JS API and set origin to avoid player configuration errors
+    params.set('enablejsapi', '1');
+    try {
+        params.set('origin', window.location.origin);
+    } catch (e) {
+        // ignore if origin isn't available (very rare)
+    }
+    params.set('rel', '0');
+    params.set('modestbranding', '1');
+    return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+}
+
+function postYouTubeCommand(iframe, command) {
+    if (!iframe || !iframe.contentWindow) return false;
+    try {
+        iframe.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func: command,
+            args: []
+        }), '*');
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const modalElement = document.getElementById('videoModal');
     const modalVideoIframe = document.getElementById('modal-video');
     const miniTvIframe = document.getElementById('mini-tv-video');
-    const bootstrapModal = modalElement ? new bootstrap.Modal(modalElement) : null;
+    const bootstrapModal = modalElement && window.bootstrap ? new bootstrap.Modal(modalElement) : null;
 
-    function buildMiniLoopSrc() {
-        return `https://www.youtube.com/embed/${miniTvVideoId}?autoplay=1&mute=1&loop=1&playlist=${miniTvVideoId}`;
+    // Ensure iframes have proper allow attributes (helps autoplay)
+    [modalVideoIframe, miniTvIframe].forEach(iframe => {
+        if (!iframe) return;
+        iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+    });
+
+    // Initialize mini TV looped player
+    if (miniTvIframe) {
+        // set looping, muted, autoplay embed with origin+enablejsapi
+        miniTvIframe.src = buildEmbedSrc(miniTvVideoId, { autoplay: true, loop: true });
     }
 
-    // Ensure all media elements are muted by default
-    const mediaElements = document.querySelectorAll("audio, video");
-    mediaElements.forEach(element => {
-        element.muted = true;
-    });
-
-    // Mute existing YouTube iframes (preserves other params)
-    const iframeElements = document.querySelectorAll("iframe");
-    iframeElements.forEach(iframe => {
-        try {
-            const src = iframe.getAttribute('src') || '';
-            if (src.includes("youtube.com/embed")) {
-                // If this is the mini-tv iframe and has no src, set looping src
-                if (iframe.id === 'mini-tv-video' && (!src || src.trim() === "")) {
-                    iframe.src = buildMiniLoopSrc();
-                } else {
-                    iframe.src = appendMuteToYouTubeURL(src);
-                }
-            }
-        } catch (e) {
-            // ignore invalid URLs
-        }
-    });
-
     if (modalElement && modalVideoIframe) {
-        // Expose openModal globally if other code triggers it
+        // Expose openModal globally for other code
         window.openModal = function() {
-            modalVideoIframe.src = `https://www.youtube.com/embed/${miniTvVideoId}?autoplay=1&mute=1&loop=1&playlist=${miniTvVideoId}`;
-            if (miniTvIframe) {
-                miniTvIframe.src = "";
+            // try to pause mini player via JS API; if not possible, clear its src as fallback
+            if (!postYouTubeCommand(miniTvIframe, 'pauseVideo')) {
+                try { miniTvIframe.src = ''; } catch (e) { /* ignore */ }
             }
+
+            // set modal player to play (no loop needed)
+            modalVideoIframe.src = buildEmbedSrc(miniTvVideoId, { autoplay: true, loop: false });
             bootstrapModal && bootstrapModal.show();
         };
 
+        // When modal closes stop modal player and resume mini player
         modalElement.addEventListener('hidden.bs.modal', () => {
-            modalVideoIframe.src = "";
-            if (miniTvIframe) {
-                miniTvIframe.src = buildMiniLoopSrc();
+            // stop modal player via JS API if possible
+            if (!postYouTubeCommand(modalVideoIframe, 'stopVideo')) {
+                try { modalVideoIframe.src = ''; } catch (e) { /* ignore */ }
+            } else {
+                // also clear src to fully reset iframe
+                try { modalVideoIframe.src = ''; } catch (e) { /* ignore */ }
+            }
+
+            // try to resume mini player via JS API; fallback to re-assigning src
+            if (!postYouTubeCommand(miniTvIframe, 'playVideo')) {
+                try { miniTvIframe.src = buildEmbedSrc(miniTvVideoId, { autoplay: true, loop: true }); } catch (e) { /* ignore */ }
             }
         });
     }
 });
-
-// keep helper function at module scope
-function appendMuteToYouTubeURL(url) {
-    try {
-        const urlObj = new URL(url);
-        urlObj.searchParams.set("mute", "1");
-        // if loop param missing for a single-video embed that should loop, playlist must be set externally
-        return urlObj.toString();
-    } catch (e) {
-        return url;
-    }
-}
