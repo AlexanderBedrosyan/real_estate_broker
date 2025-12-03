@@ -34,5 +34,28 @@ done
 echo "Database is ready, running migrations..."
 python manage.py migrate
 
+python - <<END
+import os
+from django.contrib.auth import get_user_model
+import django
+
+django.setup()
+User = get_user_model()
+
+username = os.environ.get("DJANGO_SUPERUSER_USERNAME")
+email = os.environ.get("DJANGO_SUPERUSER_EMAIL")
+password = os.environ.get("DJANGO_SUPERUSER_PASSWORD")
+
+if username and password:
+    if not User.objects.filter(username=username).exists():
+        print("Superuser does not exist. Creating...")
+        User.objects.create_superuser(username=username, email=email, password=password)
+        print("Superuser created!")
+    else:
+        print("Superuser already exists. Skipping.")
+else:
+    print("Missing superuser environment variables. Skipping creation.")
+END
+
 echo "Starting Django server..."
 exec python manage.py runserver 0.0.0.0:8050
