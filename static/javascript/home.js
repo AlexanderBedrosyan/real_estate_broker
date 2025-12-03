@@ -1,4 +1,4 @@
-const miniTvVideoId = 'KUvOUxkQpGg';
+const miniTvVideoId = 'ZK6pIYphIjU';
 
 function buildEmbedSrc(videoId, { autoplay=false, loop=false } = {}) {
     const params = new URLSearchParams();
