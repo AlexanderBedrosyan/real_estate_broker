@@ -55,6 +55,9 @@ class EventsView(ListView):
     model = Event
     paginate_by = 3
 
+    def get_queryset(self):
+        return super().get_queryset().order_by('-pk')
+
 
 class InvestWithMeView(TemplateView):
     template_name = 'invest_with_me.html'
@@ -71,6 +74,9 @@ class ProjectListView(ListView):
     template_name = 'projects.html'
     context_object_name = 'object_list'
     paginate_by = 3
+
+    def get_queryset(self):
+        return super().get_queryset().order_by('-pk')
 
 
 class ProjectDetailView(DetailView):
