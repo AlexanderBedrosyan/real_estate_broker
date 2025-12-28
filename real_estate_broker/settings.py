@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',  # Add this line
     'real_estate_broker.main_app',
     'real_estate_broker.account',
     'real_estate_broker.common',
