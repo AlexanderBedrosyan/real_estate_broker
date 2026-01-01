@@ -6,4 +6,6 @@ urlpatterns = [
     path('privacy-policy/', views.PrivacyPolicyView.as_view(), name='privacy-policy'),
     path('cookie-policy/', views.CookiePolicyView.as_view(), name='cookie-policy'),
     path('return-policy/', views.ReturnPolicyView.as_view(), name='return-policy'),
+    path('manifest.json', views.manifest, name='manifest'),
 ]
+
