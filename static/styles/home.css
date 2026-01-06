@@ -69,7 +69,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    z-index: 1000;
+    z-index: 1050;
     margin-bottom: 50px !important;
 }
 
@@ -79,10 +79,11 @@
     height: 100%;
 }
 
-iframe {
+#mini-tv iframe {
     width: 100%;
     height: 100%;
     border: none;
+    display: block;
 }
 
 .tv-overlay {
@@ -92,7 +93,6 @@ iframe {
     width: 100%;
     height: 100%;
     cursor: pointer;
-    z-index: 2;
 }
 
 .tv-overlay:hover {
@@ -205,26 +205,8 @@ iframe {
         border-radius: 0 !important;
     }
     
-    /* iOS Safari specific fix - ensure the container and children are transparent */
-    #mini-tv .tv-frame {
-        background-color: transparent !important;
-    }
-    
-    #mini-tv iframe {
-        background-color: transparent !important;
-        width: 100% !important;
-        height: 100% !important;
-        display: block !important;
-        position: relative !important;
-        z-index: 1 !important;
-    }
-    
-    /* On mobile, make overlay not block video but still clickable */
+    /* Make overlay not block video on mobile */
     #mini-tv .tv-overlay {
-        background-color: transparent !important;
         pointer-events: none !important;
     }
 }
-    }
-}
-

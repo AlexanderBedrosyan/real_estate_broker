@@ -40,10 +40,6 @@
       /* Ensure iframe fills modal area */
       .modal-fullscreen-iframe { width: 100%; height: 100%; border: 0; display:block; }
 
-      /* Remove any tv-frame decorations around the mini iframe */
-      .tv-frame { background: transparent !important; box-shadow: none !important; border: none !important; padding: 0; }
-      #mini-tv-video { width: 100%; height: 100%; display:block; border-radius: 0 !important; }
-
       /* Ensure fallback/poster matches video look */
       .mini-tv-fallback { background: transparent; color: inherit; }
     </style>
@@ -91,20 +87,19 @@
 </div>
 
 <!-- mini-tv iframe (right-bottom) -->
-<div id="mini-tv" class="position-fixed bottom-0 end-0 m-3" style="z-index:1050;">
-    <div class="tv-frame position-relative" style="width:100%;height:100%;">
+<div id="mini-tv" class="position-fixed bottom-0 end-0 m-3">
+    <div class="tv-frame position-relative">
         <iframe id="mini-tv-video"
-                width="220"
-                height="124"
                 data-video-id="KUvOUxkQpGg"
                 src=""
                 title="Mini TV"
                 frameborder="0"
-                allow="autoplay; encrypted-media; picture-in-picture; web-share"
-                allowfullscreen>
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                playsinline>
         </iframe>
         <!-- overlay catches clicks and opens fullscreen modal -->
-        <div class="tv-overlay position-absolute top-0 start-0 w-100 h-100" style="cursor:pointer;" onclick="openModal()"></div>
+        <div class="tv-overlay" onclick="openModal()"></div>
     </div>
 </div>
 

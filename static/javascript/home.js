@@ -54,7 +54,7 @@
 
         [miniTvIframe, modalIframe].forEach(iframe => {
             if (!iframe) return;
-            iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; web-share');
+            iframe.setAttribute('allow', 'autoplay; encrypted-media');
             iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
         });
 
@@ -62,24 +62,7 @@
 
         if (embeddable) {
             if (miniTvIframe) {
-                // Set the src with autoplay
-                const embedUrl = buildEmbedSrc(videoId, { autoplay: true, loop: true });
-                miniTvIframe.src = embedUrl;
-                
-                // For iOS/mobile: additional attempt after slight delay to ensure iframe is ready
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                if (isMobile) {
-                    setTimeout(() => {
-                        if (miniTvIframe && miniTvIframe.src === embedUrl) {
-                            // Force reload by clearing and resetting
-                            const tempSrc = miniTvIframe.src;
-                            miniTvIframe.src = '';
-                            setTimeout(() => {
-                                miniTvIframe.src = tempSrc;
-                            }, 100);
-                        }
-                    }, 500);
-                }
+                miniTvIframe.src = buildEmbedSrc(videoId, { autoplay: true, loop: true });
             }
         } else {
             if (miniTvIframe && miniTvIframe.parentNode) {
