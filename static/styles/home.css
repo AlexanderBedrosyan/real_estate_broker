@@ -69,7 +69,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    z-index: 1050;
+    z-index: 1000;
     margin-bottom: 50px !important;
 }
 
@@ -79,11 +79,10 @@
     height: 100%;
 }
 
-#mini-tv iframe {
+iframe {
     width: 100%;
     height: 100%;
     border: none;
-    display: block;
 }
 
 .tv-overlay {
@@ -198,15 +197,9 @@
     }
 
     #mini-tv {
-        width: 100px !important;
-        height: 56.5px !important;
+        width: 100px;
+        height: 56.5px;
         background-color: transparent !important;
         box-shadow: none !important;
-        border-radius: 0 !important;
-    }
-    
-    /* Make overlay not block video on mobile */
-    #mini-tv .tv-overlay {
-        pointer-events: none !important;
     }
 }

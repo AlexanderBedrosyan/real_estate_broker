@@ -13,7 +13,6 @@
             params.set('playlist', videoId);
         }
         params.set('enablejsapi', '1');
-        params.set('playsinline', '1');
         try { params.set('origin', window.location.origin); } catch (e) { /* ignore */ }
         params.set('rel', '0');
         params.set('modestbranding', '1');
@@ -54,16 +53,14 @@
 
         [miniTvIframe, modalIframe].forEach(iframe => {
             if (!iframe) return;
-            iframe.setAttribute('allow', 'autoplay; encrypted-media');
+            iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
             iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
         });
 
         const embeddable = await checkEmbeddable(videoId);
 
         if (embeddable) {
-            if (miniTvIframe) {
-                miniTvIframe.src = buildEmbedSrc(videoId, { autoplay: true, loop: true });
-            }
+            if (miniTvIframe) miniTvIframe.src = buildEmbedSrc(videoId, { autoplay: true, loop: true });
         } else {
             if (miniTvIframe && miniTvIframe.parentNode) {
                 const poster = document.createElement('div');
