@@ -191,6 +191,11 @@ iframe {
         margin-inline: 11px !important;
     }
 
+    /* Hide the GIF video on mobile */
+    #mini-tv-gif {
+        display: none !important;
+    }
+
     #mini-tv {
         width: 100px;
         height: 56.5px;
