@@ -8,7 +8,6 @@
         const params = new URLSearchParams();
         if (autoplay) params.set('autoplay', '1');
         params.set('mute', '1');
-        params.set('playsinline', '1');
         if (loop) {
             params.set('loop', '1');
             params.set('playlist', videoId);
