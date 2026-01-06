@@ -191,15 +191,11 @@ iframe {
         margin-inline: 11px !important;
     }
 
-    /* Hide the GIF video on mobile, show YouTube iframe instead */
-    #mini-tv-gif {
-        display: none !important;
-    }
-
     #mini-tv {
         width: 100px;
         height: 56.5px;
         background-color: transparent !important;
         box-shadow: none !important;
+        border-radius: 0 !important;
     }
 }
