@@ -13,6 +13,7 @@
             params.set('playlist', videoId);
         }
         params.set('enablejsapi', '1');
+        params.set('playsinline', '1');
         try { params.set('origin', window.location.origin); } catch (e) { /* ignore */ }
         params.set('rel', '0');
         params.set('modestbranding', '1');
@@ -53,7 +54,7 @@
 
         [miniTvIframe, modalIframe].forEach(iframe => {
             if (!iframe) return;
-            iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+            iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; web-share');
             iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
         });
 
@@ -61,15 +62,24 @@
 
         if (embeddable) {
             if (miniTvIframe) {
-                miniTvIframe.src = buildEmbedSrc(videoId, { autoplay: true, loop: true });
+                // Set the src with autoplay
+                const embedUrl = buildEmbedSrc(videoId, { autoplay: true, loop: true });
+                miniTvIframe.src = embedUrl;
                 
-                // For iOS/mobile: try to play on user interaction if autoplay fails
-                setTimeout(() => {
-                    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                    if (isMobile && miniTvIframe && !miniTvIframe.src) {
-                        miniTvIframe.src = buildEmbedSrc(videoId, { autoplay: true, loop: true });
-                    }
-                }, 1000);
+                // For iOS/mobile: additional attempt after slight delay to ensure iframe is ready
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                if (isMobile) {
+                    setTimeout(() => {
+                        if (miniTvIframe && miniTvIframe.src === embedUrl) {
+                            // Force reload by clearing and resetting
+                            const tempSrc = miniTvIframe.src;
+                            miniTvIframe.src = '';
+                            setTimeout(() => {
+                                miniTvIframe.src = tempSrc;
+                            }, 100);
+                        }
+                    }, 500);
+                }
             }
         } else {
             if (miniTvIframe && miniTvIframe.parentNode) {
