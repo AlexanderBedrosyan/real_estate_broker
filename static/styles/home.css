@@ -54,11 +54,6 @@
     pointer-events: none;
 }
 
-/* Hide the old video element - not used anymore */
-#mini-tv-gif {
-    display: none !important;
-}
-
 #mini-tv {
     position: fixed;
     bottom: 5rem;
@@ -194,6 +189,11 @@ iframe {
 
     body > header > nav > div {
         margin-inline: 11px !important;
+    }
+
+    /* Hide the GIF video on mobile, show YouTube iframe instead */
+    #mini-tv-gif {
+        display: none !important;
     }
 
     #mini-tv {
