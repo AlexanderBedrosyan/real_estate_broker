@@ -197,6 +197,16 @@ iframe {
         height: 56.5px;
         background-color: transparent !important;
         box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+    
+    /* iOS Safari specific fix - ensure the container and children are transparent */
+    #mini-tv .tv-frame {
+        background-color: transparent !important;
+    }
+    
+    #mini-tv iframe {
+        background-color: transparent !important;
     }
 }
 
