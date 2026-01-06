@@ -54,6 +54,10 @@
     pointer-events: none;
 }
 
+/* Hide the old video element - not used anymore */
+#mini-tv-gif {
+    display: none !important;
+}
 
 #mini-tv {
     position: fixed;
@@ -198,6 +202,7 @@ iframe {
         background-color: transparent !important;
         box-shadow: none !important;
         border-radius: 0 !important;
+        overflow: visible !important;
     }
     
     /* iOS Safari specific fix - ensure the container and children are transparent */
@@ -207,6 +212,13 @@ iframe {
     
     #mini-tv iframe {
         background-color: transparent !important;
+    }
+    
+    /* Ensure no black backgrounds leak through on iOS */
+    .tv-overlay {
+        background-color: transparent !important;
+    }
+}
     }
 }
 
