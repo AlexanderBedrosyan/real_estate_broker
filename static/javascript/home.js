@@ -60,7 +60,17 @@
         const embeddable = await checkEmbeddable(videoId);
 
         if (embeddable) {
-            if (miniTvIframe) miniTvIframe.src = buildEmbedSrc(videoId, { autoplay: true, loop: true });
+            if (miniTvIframe) {
+                miniTvIframe.src = buildEmbedSrc(videoId, { autoplay: true, loop: true });
+                
+                // For iOS/mobile: try to play on user interaction if autoplay fails
+                setTimeout(() => {
+                    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                    if (isMobile && miniTvIframe && !miniTvIframe.src) {
+                        miniTvIframe.src = buildEmbedSrc(videoId, { autoplay: true, loop: true });
+                    }
+                }, 1000);
+            }
         } else {
             if (miniTvIframe && miniTvIframe.parentNode) {
                 const poster = document.createElement('div');

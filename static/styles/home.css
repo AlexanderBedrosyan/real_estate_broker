@@ -202,7 +202,6 @@ iframe {
         background-color: transparent !important;
         box-shadow: none !important;
         border-radius: 0 !important;
-        overflow: visible !important;
     }
     
     /* iOS Safari specific fix - ensure the container and children are transparent */
@@ -212,6 +211,9 @@ iframe {
     
     #mini-tv iframe {
         background-color: transparent !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
     }
     
     /* Ensure no black backgrounds leak through on iOS */
