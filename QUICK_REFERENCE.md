@@ -58,7 +58,7 @@ ls -lh ./backups/
 If you want to verify volumes are working (not required):
 
 ```bash
-# SSH into server and check
+# SSH into server and check. Only for testing
 docker volume ls | grep pgdata
 
 # Should show: real_estate_broker_pgdata
