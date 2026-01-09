@@ -1,0 +1,7 @@
+venv
+.idea
+*.pyo
+*.pyc
+__pycache__/
+test_script.py
+.env

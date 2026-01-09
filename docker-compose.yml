@@ -47,6 +47,7 @@ services:
   db:
     image: postgres:14
     container_name: postgres_db
+    restart: unless-stopped
     env_file:
       - .env
     ports:
@@ -55,16 +56,23 @@ services:
       - pgdata:/var/lib/postgresql/data/
     networks:
       - app_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   django:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: django_app_2
+    restart: unless-stopped
     env_file:
       - .env
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       DB_HOST: db
       DB_PORT: 5432
@@ -76,6 +84,9 @@ services:
       LETSENCRYPT_EMAIL: твоя_email@example.com
     expose:
       - "8050"
+    volumes:
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
     networks:
       - app_net
 
@@ -111,6 +122,11 @@ services:
 
 volumes:
   pgdata:
+    driver: local
+  static_volume:
+    driver: local
+  media_volume:
+    driver: local
 
 networks:
   app_net:
