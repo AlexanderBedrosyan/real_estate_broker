@@ -34,6 +34,9 @@ done
 echo "Database is ready, running migrations..."
 python manage.py migrate
 
+echo "Collecting static files..."
+python manage.py collectstatic --noinput
+
 python - <<END
 import os
 from django.contrib.auth import get_user_model
