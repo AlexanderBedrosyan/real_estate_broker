@@ -7,6 +7,10 @@ from .forms import ConsultationCreateForm
 
 # Create your views here.
 
+def error_404_view(request, exception):
+    """Custom 404 error handler"""
+    return render(request, '404.html', status=404)
+
 
 class HomeView(TemplateView):
     template_name = 'home.html'
