@@ -10,4 +10,8 @@ class CustomerModelAdmin(admin.ModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    pass
+    
+    list_display = (
+        'account', 
+        'email'
+        )
