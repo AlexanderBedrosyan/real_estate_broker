@@ -9,7 +9,8 @@ class EventAdmin(admin.ModelAdmin):
 @admin.register(Consultation)
 class ConsultationAdmin(admin.ModelAdmin):
     list_display = (
-    'first_name + " " + last_name', 
+    'first_name', 
+    'last_name',
     'email'
     )
 
