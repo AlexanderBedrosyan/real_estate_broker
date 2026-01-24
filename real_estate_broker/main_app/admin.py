@@ -8,8 +8,13 @@ class EventAdmin(admin.ModelAdmin):
 
 @admin.register(Consultation)
 class ConsultationAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+    'first_name + " " + last_name', 
+    'email'
+    )
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'title',
+    )
