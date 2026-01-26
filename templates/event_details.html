@@ -1,11 +1,31 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ event.title }}</title>
+    <title>{{ event.title }} - Стоян Черелов | Събития</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ event.description|truncatewords:30 }} - Организирано от {{ event.organizer }} на {{ event.date|date:'d.m.Y' }} в {{ event.location }}.">
+    <meta name="keywords" content="{{ event.title }}, събитие недвижими имоти, семинар Бургас, {{ event.organizer }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://stoyancherelov.com/events/{{ event.id }}/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ event.title }} - Стоян Черелов">
+    <meta property="og:description" content="{{ event.description|truncatewords:30 }}">
+    <meta property="og:url" content="https://stoyancherelov.com/events/{{ event.id }}/">
+    <meta property="og:image" content="{{ event.image }}">
+    <meta property="og:locale" content="bg_BG">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ event.title }}">
+    <meta name="twitter:description" content="{{ event.description|truncatewords:30 }}">
+    <meta name="twitter:image" content="{{ event.image }}">
     
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="{% url 'manifest' %}">
@@ -19,6 +39,31 @@
     
     <!-- Standard favicon -->
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+    
+    <!-- Structured Data for Event -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "{{ event.title }}",
+      "description": "{{ event.description }}",
+      "startDate": "{{ event.date|date:'c' }}",
+      "location": {
+        "@type": "Place",
+        "name": "{{ event.location }}",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "{{ event.location }}",
+          "addressCountry": "BG"
+        }
+      },
+      "image": "{{ event.image }}",
+      "organizer": {
+        "@type": "Person",
+        "name": "{{ event.organizer }}"
+      }
+    }
+    </script>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles/event_detail.css' %}">

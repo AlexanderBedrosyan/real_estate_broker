@@ -4,33 +4,51 @@ from .models import Event, Project
 
 
 class StaticViewSitemap(Sitemap):
-    priority = 0.8
-    changefreq = 'weekly'
-
+    """Sitemap for static pages"""
+    protocol = 'https'
+    
     def items(self):
-        return ['home', 'events', 'projects', 'consultation', 'invest-with-me', 'contacts']
+        # Returns list of tuples: (url_name, priority, changefreq)
+        return [
+            ('home', 1.0, 'daily'),
+            ('projects', 0.9, 'weekly'),
+            ('events', 0.9, 'weekly'),
+            ('consultation', 0.8, 'monthly'),
+            ('invest-with-me', 0.8, 'monthly'),
+            ('contacts', 0.7, 'monthly'),
+        ]
 
     def location(self, item):
-        return reverse(item)
+        return reverse(item[0])
+    
+    def priority(self, item):
+        return item[1]
+    
+    def changefreq(self, item):
+        return item[2]
 
 
 class EventSitemap(Sitemap):
+    """Sitemap for event pages"""
     changefreq = 'weekly'
-    priority = 0.7
+    priority = 0.8
+    protocol = 'https'
 
     def items(self):
-        return Event.objects.all().order_by('-pk')
+        return Event.objects.all().order_by('-date')
 
     def lastmod(self, obj):
-        return getattr(obj, 'updated_at', None) or getattr(obj, 'created_at', None)
+        return obj.date
 
 
 class ProjectSitemap(Sitemap):
+    """Sitemap for project pages"""
     changefreq = 'weekly'
-    priority = 0.7
+    priority = 0.8
+    protocol = 'https'
 
     def items(self):
-        return Project.objects.all().order_by('-pk')
+        return Project.objects.all().order_by('-created_at')
 
     def lastmod(self, obj):
-        return getattr(obj, 'updated_at', None) or getattr(obj, 'created_at', None)
+        return obj.created_at

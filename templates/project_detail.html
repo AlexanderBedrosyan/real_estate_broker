@@ -1,11 +1,32 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ project.title }}</title>
+    <title>{{ project.title }} - Стоян Черелов | Проекти</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ project.description|truncatewords:30 }}">
+    <meta name="keywords" content="{{ project.title }}, инвестиционен проект, недвижими имоти Бургас, Стоян Черелов">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://stoyancherelov.com/projects/{{ project.id }}/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ project.title }} - Стоян Черелов">
+    <meta property="og:description" content="{{ project.description|truncatewords:30 }}">
+    <meta property="og:url" content="https://stoyancherelov.com/projects/{{ project.id }}/">
+    <meta property="og:image" content="{{ project.image_url }}">
+    <meta property="og:locale" content="bg_BG">
+    <meta property="article:published_time" content="{{ project.created_at|date:'c' }}">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ project.title }}">
+    <meta name="twitter:description" content="{{ project.description|truncatewords:30 }}">
+    <meta name="twitter:image" content="{{ project.image_url }}">
     
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="{% url 'manifest' %}">

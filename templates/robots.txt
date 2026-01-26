@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /account/
+
+# Sitemap location
+Sitemap: https://stoyancherelov.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1

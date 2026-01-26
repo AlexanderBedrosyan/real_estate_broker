@@ -1,11 +1,33 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Стоян Черелов - Недвижими имоти в Бургас</title>
+    <title>Стоян Черелов - Недвижими имоти в Бургас | Професионален брокер</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Стоян Черелов - Вашият доверен брокер за недвижими имоти в Бургас. Професионални услуги, инвестиционни консултации и изгодни оферти за имоти. Над 10 години опит в недвижимите имоти.">
+    <meta name="keywords" content="недвижими имоти, Бургас, брокер, имоти под наем, продажба имоти, инвестиции в недвижими имоти, Стоян Черелов, жилища Бургас, апартаменти Бургас">
+    <meta name="author" content="Стоян Черелов">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://stoyancherelov.com/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Стоян Черелов - Недвижими имоти в Бургас">
+    <meta property="og:description" content="Професионални услуги за недвижими имоти в Бургас. Консултации, покупко-продажби и инвестиции с над 10 години опит.">
+    <meta property="og:url" content="https://stoyancherelov.com/">
+    <meta property="og:image" content="{% static 'images/logo.png' %}">
+    <meta property="og:locale" content="bg_BG">
+    <meta property="og:site_name" content="Стоян Черелов - Real Estate Broker">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Стоян Черелов - Недвижими имоти в Бургас">
+    <meta name="twitter:description" content="Професионални услуги за недвижими имоти в Бургас. Консултации, покупко-продажби и инвестиции.">
+    <meta name="twitter:image" content="{% static 'images/logo.png' %}">
     
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="{% url 'manifest' %}">
@@ -21,6 +43,31 @@
     
     <!-- Standard favicon -->
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Стоян Черелов",
+      "image": "{% static 'images/logo.png' %}",
+      "@id": "https://stoyancherelov.com",
+      "url": "https://stoyancherelov.com",
+      "telephone": "+359-XXX-XXX-XXX",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "",
+        "addressLocality": "Бургас",
+        "addressCountry": "BG"
+      },
+      "areaServed": "Бургас",
+      "priceRange": "$$",
+      "knowsAbout": ["Недвижими имоти", "Инвестиции", "Консултации"],
+      "sameAs": [
+        "{{ customer.contacts.facebook_page }}"
+      ]
+    }
+    </script>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles/home.css' %}">
