@@ -23,7 +23,8 @@ class ProjectAdmin(admin.ModelAdmin):
 @admin.register(Comments)
 class CommentsAdmin(admin.ModelAdmin):
     list_display = (
-        'author',
-        'content',
+        'first_name',
+        'last_name',
+        'profession',
         'created_at',
     )
