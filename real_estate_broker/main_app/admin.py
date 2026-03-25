@@ -26,4 +26,10 @@ class CommentsAdmin(admin.ModelAdmin):
         'first_name',
         'last_name',
         'profession',
+        'short_message_preview',
+        'picture',
     )
+
+    def short_message_preview(self, obj):
+        return obj.short_message[:60] + '…' if len(obj.short_message) > 60 else obj.short_message
+    short_message_preview.short_description = 'Message'
