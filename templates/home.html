@@ -189,9 +189,11 @@
                     <p class="text-warning small">{{ first_comment.profession }}</p>
                     {% endif %}
                 </div>
+                {% if first_comment.picture %}
                 <div class="col-md-6">
-                    <img src="{{ first_comment.picture_url }}" class="img-fluid rounded" alt="Георги Петков">
+                    <img src="{{ first_comment.picture.url }}" class="img-fluid rounded" alt="{{ first_comment.first_name }} {{ first_comment.last_name }}">
                 </div>
+                {% endif %}
             </div>
         </div>
         {% endif %}
@@ -201,12 +203,18 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <p class="text-white-50 small">„{{ comment.short_message }}“</p>
+                    {% if comment.first_name and comment.last_name %}
                     <h5 class="fw-bold text-white">{{ comment.first_name }} {{ comment.last_name }}</h5>
+                    {% endif %}
+                    {% if comment.profession %}
                     <p class="text-warning small">{{ comment.profession }}</p>
+                    {% endif %}
                 </div>
+                {% if comment.picture %}
                 <div class="col-md-6">
-                    <img src="{{ comment.picture_url }}" class="img-fluid rounded" alt="Иван Иванов">
+                    <img src="{{ comment.picture.url }}" class="img-fluid rounded" alt="{{ comment.first_name }} {{ comment.last_name }}">
                 </div>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
