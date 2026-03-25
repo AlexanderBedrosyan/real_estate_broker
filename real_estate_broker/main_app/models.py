@@ -7,13 +7,16 @@ from .choices import ConsultationChoices
 
 class Comments(models.Model):
     first_name = models.CharField(
-        max_length=100
+        max_length=100,
+        blank=True
     )
     last_name = models.CharField(
-        max_length=100
+        max_length=100,
+        blank=True
     )
     profession = models.CharField(
-        max_length=100
+        max_length=100,
+        blank=True
     )
     picture_url = models.URLField()
     short_message = models.CharField(
