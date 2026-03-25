@@ -182,8 +182,12 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <p class="text-white-50 small">„{{ first_comment.short_message }}“</p>
+                    {% if first_comment.first_name and first_comment.last_name %}
                     <h5 class="fw-bold text-white">{{ first_comment.first_name }} {{ first_comment.last_name }}</h5>
+                    {% endif %}
+                    {% if first_comment.profession %}
                     <p class="text-warning small">{{ first_comment.profession }}</p>
+                    {% endif %}
                 </div>
                 <div class="col-md-6">
                     <img src="{{ first_comment.picture_url }}" class="img-fluid rounded" alt="Георги Петков">
