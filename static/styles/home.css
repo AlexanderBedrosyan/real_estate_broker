@@ -114,8 +114,17 @@ iframe {
 
 .carousel {
     background-color: rgba(0, 0, 0, 0.6);
-    padding: 2rem 5rem;
+    padding: 2rem 4rem;
     border-radius: 15px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 3rem;
+}
+
+.carousel-item .row {
+    padding: 0 1rem;
 }
 
 .carousel-inner {
