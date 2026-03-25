@@ -114,7 +114,7 @@ iframe {
 
 .carousel {
     background-color: rgba(0, 0, 0, 0.6);
-    padding: 2rem;
+    padding: 2rem 5rem;
     border-radius: 15px;
 }
 
@@ -122,10 +122,17 @@ iframe {
     text-align: center;
 }
 
+.carousel-item .row {
+    text-align: left;
+}
+
 .carousel-item img {
-    max-height: 400px;
+    width: 180px;
+    height: 180px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
 }
 
 .text-warning {
