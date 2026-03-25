@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 from .validators import IsItAPhoneNumber, DateChecker
 from .choices import ConsultationChoices
 
@@ -18,13 +20,21 @@ class Comments(models.Model):
         max_length=100,
         blank=True
     )
-    picture_url = models.URLField()
-    short_message = models.CharField(
-        max_length=1000
+    picture = models.ImageField(
+        upload_to='comments/',
+        blank=True,
+        null=True
     )
+    short_message = models.TextField()
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+
+@receiver(post_delete, sender=Comments)
+def delete_comment_picture(sender, instance, **kwargs):
+    if instance.picture:
+        instance.picture.delete(save=False)
 
 
 class Consultation(models.Model):
