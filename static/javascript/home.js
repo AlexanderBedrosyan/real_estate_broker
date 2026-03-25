@@ -133,3 +133,24 @@
         }
     });
 })();
+
+// Testimonial slider
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.testimonial-slide');
+    if (slides.length === 0) return;
+    let current = 0;
+
+    function show(index) {
+        slides[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+    }
+
+    const prev = document.getElementById('testimonialPrev');
+    const next = document.getElementById('testimonialNext');
+    if (prev) prev.addEventListener('click', () => show(current - 1));
+    if (next) next.addEventListener('click', () => show(current + 1));
+
+    // Auto-advance every 5 seconds
+    setInterval(() => show(current + 1), 5000);
+});

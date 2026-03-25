@@ -175,13 +175,15 @@
 
 <!-- ...existing code... -->
 
-<div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-    <div class="carousel-inner">
+<div class="testimonial-section">
+    <button class="testimonial-arrow" id="testimonialPrev" aria-label="Previous">&#8249;</button>
+
+    <div class="testimonial-track">
         {% if first_comment %}
-        <div class="carousel-item active">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="text-white-50 small">„{{ first_comment.short_message }}“</p>
+        <div class="testimonial-slide active">
+            <div class="testimonial-content">
+                <div class="testimonial-text">
+                    <p class="text-white-50">„{{ first_comment.short_message }}”</p>
                     {% if first_comment.first_name and first_comment.last_name %}
                     <h5 class="fw-bold text-white">{{ first_comment.first_name }} {{ first_comment.last_name }}</h5>
                     {% endif %}
@@ -190,8 +192,8 @@
                     {% endif %}
                 </div>
                 {% if first_comment.picture %}
-                <div class="col-md-6">
-                    <img src="{{ first_comment.picture.url }}" class="img-fluid rounded" alt="{{ first_comment.first_name }} {{ first_comment.last_name }}">
+                <div class="testimonial-image">
+                    <img src="{{ first_comment.picture.url }}" alt="{{ first_comment.first_name }} {{ first_comment.last_name }}">
                 </div>
                 {% endif %}
             </div>
@@ -199,10 +201,10 @@
         {% endif %}
 
         {% for comment in comments %}
-        <div class="carousel-item">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="text-white-50 small">„{{ comment.short_message }}“</p>
+        <div class="testimonial-slide">
+            <div class="testimonial-content">
+                <div class="testimonial-text">
+                    <p class="text-white-50">„{{ comment.short_message }}”</p>
                     {% if comment.first_name and comment.last_name %}
                     <h5 class="fw-bold text-white">{{ comment.first_name }} {{ comment.last_name }}</h5>
                     {% endif %}
@@ -211,25 +213,16 @@
                     {% endif %}
                 </div>
                 {% if comment.picture %}
-                <div class="col-md-6">
-                    <img src="{{ comment.picture.url }}" class="img-fluid rounded" alt="{{ comment.first_name }} {{ comment.last_name }}">
+                <div class="testimonial-image">
+                    <img src="{{ comment.picture.url }}" alt="{{ comment.first_name }} {{ comment.last_name }}">
                 </div>
                 {% endif %}
             </div>
         </div>
         {% endfor %}
-
- 
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+    <button class="testimonial-arrow" id="testimonialNext" aria-label="Next">&#8250;</button>
 </div>
 
 <div class="container text-center my-5 py-5">
