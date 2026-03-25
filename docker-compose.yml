@@ -102,6 +102,7 @@ services:
       - ./nginx/certs:/etc/nginx/certs:rw
       - ./nginx/vhost.d:/etc/nginx/vhost.d
       - ./nginx/html:/usr/share/nginx/html
+      - media_volume:/app/media:ro
     networks:
       - app_net
 
