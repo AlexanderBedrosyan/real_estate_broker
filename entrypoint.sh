@@ -1,12 +1,5 @@
 #!/bin/sh
-# Скрипт за изчакване на базата преди стартиране на Django
-
-echo "ENV debug:"
-echo "DB_HOST=$DB_HOST"
-echo "DB_PORT=$DB_PORT"
-echo "DB_NAME=$DB_NAME"
-echo "DB_USER=$DB_USER"
-echo "DB_PASSWORD=$DB_PASSWORD"
+# Wait for database before starting Django
 
 echo "Waiting for database to be ready..."
 
@@ -62,5 +55,13 @@ else:
     print("Missing superuser environment variables. Skipping creation.")
 END
 
-echo "Starting Django server..."
-exec python manage.py runserver 0.0.0.0:8050
+echo "Starting Django server with Gunicorn..."
+exec gunicorn real_estate_broker.wsgi:application \
+    --bind 0.0.0.0:8050 \
+    --workers 2 \
+    --threads 2 \
+    --timeout 60 \
+    --max-requests 1000 \
+    --max-requests-jitter 100 \
+    --access-logfile - \
+    --error-logfile -

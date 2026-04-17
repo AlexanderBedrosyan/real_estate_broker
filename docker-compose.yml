@@ -50,12 +50,12 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    ports:
-      - "5440:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data/
     networks:
       - app_net
+    mem_limit: 256m
+    memswap_limit: 384m
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -89,14 +89,18 @@ services:
       - media_volume:/app/media
     networks:
       - app_net
+    mem_limit: 512m
+    memswap_limit: 768m
 
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: nginx_proxy
     restart: always
     ports:
-      - "8080:80"
-      - "8443:443"
+      - "80:80"
+      - "443:443"
+    mem_limit: 128m
+    memswap_limit: 192m
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx/certs:/etc/nginx/certs:rw
