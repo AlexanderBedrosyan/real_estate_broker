@@ -10,7 +10,8 @@ COPY . .
 # Create directories for media and static files
 RUN mkdir -p /app/media /app/staticfiles
 
-RUN chmod +x entrypoint.sh
+# Fix Windows CRLF line endings and set permissions
+RUN sed -i 's/\r$//' entrypoint.sh && chmod +x entrypoint.sh
 
 EXPOSE 8050
 
