@@ -80,8 +80,6 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
       VIRTUAL_HOST: stoyancherelov.com,www.stoyancherelov.com
-      LETSENCRYPT_HOST: stoyancherelov.com,www.stoyancherelov.com
-      LETSENCRYPT_EMAIL: твоя_email@example.com
     expose:
       - "8050"
     volumes:
@@ -110,20 +108,6 @@ services:
     networks:
       - app_net
 
-  letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: letsencrypt
-    environment:
-      NGINX_PROXY_CONTAINER: nginx-proxy
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./nginx/certs:/etc/letsencrypt
-      - ./nginx/vhost.d:/etc/nginx/vhost.d
-      - ./nginx/html:/usr/share/nginx/html
-    depends_on:
-      - nginx-proxy
-    networks:
-      - app_net
 
 volumes:
   pgdata:
