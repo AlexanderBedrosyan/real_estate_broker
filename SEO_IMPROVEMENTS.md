@@ -10,7 +10,7 @@ Comprehensive SEO optimizations have been applied to improve your website's sear
 ✅ **Meta Keywords** - Relevant Bulgarian keywords for real estate in Burgas
 ✅ **Canonical URLs** - Prevents duplicate content issues
 ✅ **Robots Meta** - Proper indexing directives
-✅ **Language Tag** - Changed from "en" to "bg" (Bulgarian)
+✅ **Language Tag** - Changed from "en" to "bg" (Bulgarian) only because it's for Bulgarian market
 
 ### 2. Open Graph Tags (Social Media)
 ✅ All pages now have complete Open Graph tags for:
